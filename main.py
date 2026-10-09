@@ -25,11 +25,6 @@ from rich.prompt import Prompt, Confirm
 from rich.table import Table
 from rich.text import Text
 
-
-# ============================================================
-# CONFIGURATION
-# ============================================================
-
 APP_NAME = "YT TERMINAL"
 APP_VERSION = "0.1.0"
 
@@ -41,10 +36,6 @@ DEFAULT_DOWNLOAD_DIR = Path.home() / "Downloads" / "YouTube"
 
 console = Console()
 
-
-# ============================================================
-# CONFIGURATION AND HISTORY
-# ============================================================
 
 def ensure_app_dir() -> None:
     APP_DIR.mkdir(parents=True, exist_ok=True)
@@ -136,9 +127,6 @@ def add_history(
     save_json(HISTORY_FILE, history[:200])
 
 
-# ============================================================
-# TERMINAL UI
-# ============================================================
 
 def clear_screen() -> None:
     os.system("cls" if os.name == "nt" else "clear")
@@ -234,9 +222,6 @@ def ask_for_url() -> str | None:
     return url
 
 
-# ============================================================
-# VIDEO INFORMATION
-# ============================================================
 
 def format_duration(seconds) -> str:
     if not isinstance(seconds, (int, float)):
@@ -346,9 +331,6 @@ def preview_video() -> None:
     pause()
 
 
-# ============================================================
-# QUALITY SELECTION
-# ============================================================
 
 def choose_quality() -> int | None:
     table = Table(
@@ -406,10 +388,6 @@ def build_format(quality: int | None, ffmpeg: bool) -> str:
         f"best[height<={quality}]"
     )
 
-
-# ============================================================
-# DOWNLOAD PROGRESS
-# ============================================================
 
 def download_video(
     url: str,
@@ -610,9 +588,6 @@ def download_video(
     pause()
 
 
-# ============================================================
-# ERROR DISPLAY
-# ============================================================
 
 def show_error(error: Exception) -> None:
     message = str(error).strip()
@@ -633,11 +608,6 @@ def show_error(error: Exception) -> None:
         "Some videos may be private, restricted, removed, "
         "or unavailable in your region.[/dim]"
     )
-
-
-# ============================================================
-# DOWNLOAD FOLDER
-# ============================================================
 
 def change_download_folder() -> None:
     current = get_download_dir()
@@ -683,10 +653,6 @@ def open_download_folder() -> None:
     pause()
 
 
-# ============================================================
-# HISTORY
-# ============================================================
-
 def show_history() -> None:
     history = get_history()
 
@@ -730,9 +696,6 @@ def show_history() -> None:
     console.print(table)
     pause()
 
-# ============================================================
-# MAIN APPLICATION
-# ============================================================
 
 def main() -> None:
     try:
