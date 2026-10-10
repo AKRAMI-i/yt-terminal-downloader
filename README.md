@@ -24,10 +24,8 @@ A lightweight YouTube downloader for Windows CMD, built with Python, yt-dlp, and
 Install Python and Git, then run:
 
 ```bash
-py -m pip install git+https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+py -m pip install git+https://github.com/AKRAMI-i/yt-terminal-downloader.git
 ```
-
-Replace `YOUR_USERNAME` and `YOUR_REPOSITORY` with your GitHub username and repository name.
 
 Then start the application:
 
@@ -45,6 +43,3 @@ Downloads are saved to your configured folder. Configuration and download histor
 
 Use this application only for content you own or are authorized to download. Follow the applicable platform terms and copyright laws.
 
-## License
-
-Choose a license before distributing this project.
