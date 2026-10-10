@@ -25,6 +25,17 @@ from rich.prompt import Prompt, Confirm
 from rich.table import Table
 from rich.text import Text
 
+# Enable UTF-8 output in Windows terminals.
+if os.name == "nt":
+    os.system("chcp 65001 > nul")
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
+
 APP_NAME = "YT TERMINAL"
 APP_VERSION = "0.1.0"
 
@@ -34,7 +45,10 @@ HISTORY_FILE = APP_DIR / "history.json"
 
 DEFAULT_DOWNLOAD_DIR = Path.home() / "Downloads" / "YouTube"
 
-console = Console()
+console = Console(
+    legacy_windows=False,
+    safe_box=True,
+)
 
 
 def ensure_app_dir() -> None:
@@ -154,7 +168,7 @@ def show_menu() -> None:
         title="MAIN MENU",
         border_style="bright_blue",
         header_style="bold cyan",
-        expand=True,
+        expand=False,
     )
 
     table.add_column("Option", style="bold", width=10)
